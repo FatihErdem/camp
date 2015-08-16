@@ -1,7 +1,5 @@
 package tr.org.lkd.lyk2015.camp.model;
 
-
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;

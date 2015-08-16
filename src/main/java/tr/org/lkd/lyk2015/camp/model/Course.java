@@ -14,7 +14,7 @@ public class Course extends AbstractBaseModel{
     private String prerequisites;
     private String detailsPageLink;
 
-    private Boolean active;
+    private Boolean active = true;
 
     @ManyToMany
     private Set<Instructor> instructors;

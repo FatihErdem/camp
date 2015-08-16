@@ -52,6 +52,21 @@ public class AdminController {
         adminService.create(admin);
 
         return "redirect:/admins";
+    }
 
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public String getAdminUpdate(@RequestParam("id") Long id, Model model) {
+
+        Admin admin = adminService.getById(id);
+        model.addAttribute("admin", admin);
+
+        return "admin/updateAdminForm";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String postAdminUpdate(@RequestParam("id") Long id, @ModelAttribute Admin admin, Model model) {
+
+        adminService.update(admin);
+        return "redirect:/admins";
     }
 }

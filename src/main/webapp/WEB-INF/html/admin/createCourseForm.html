@@ -1,3 +1,5 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,46 +8,54 @@
 </head>
 <body>
 <div th:fragment="content">
-
     <div class="container">
         <div class="text-center">
-            <h1>Courses</h1>
+            <h1>Creating Course Form</h1>
         </div>
         <br>
 
-        <table class="table table-hover">
-            <thead>
+        <div class="col-lg-4 col-lg-offset-4 ">
+            <form action="#" th:action="@{/courses/create}" th:object="${course}" method="post">
 
-            <th>Name</th>
-            <th>Description</th>
-            <th>Prerequisites</th>
-            <th>detailPageLink</th>
+                <div class="form-group" name="name" th:errorclass="has-error">
+                    <input type="text" class="form-control" th:field="*{name}"
+                           th:errorclass="has-error" placeholder="Name">
 
-            </thead>
-            <tbody>
-            <tr th:each="course : ${courseList}">
+                    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                </div>
 
-                <td th:text="${course.name}"></td>
+                <div class="form-group" name="description" th:errorclass="has-error">
+                    <input type="text" class="form-control" th:field="*{description}"
+                           th:errorclass="has-error" placeholder="description">
 
-                <td th:text="${course.description}"></td>
+                    <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+                </div>
 
-                <td th:text="${course.prerequisites}"></td>
+                <div class="form-group" name="prerequisites" th:errorclass="has-error">
+                    <input type="text" class="form-control" th:field="*{prerequisites}"
+                           th:errorclass="has-error" placeholder="prerequisites">
 
-                <td><a th:href="${course.detailPageLink}">More Info</a></td>
+                    <p th:if="${#fields.hasErrors('prerequisites')}"
+                       th:errors="*{prerequisites}"></p>
+                </div>
 
-                <td><input type="checkbox" class="checkbox" name="active"
-                           th:checked="${course.active}"/></td>
+                <div class="form-group" name="detailsPageLink" th:errorclass="has-error">
+                    <input type="text" class="form-control" th:field="*{detailsPageLink}"
+                           th:errorclass="has-error" placeholder="detailsPageLink">
 
-                <td>
-                    <form action="#" th:action="@{/courses/update}" method="get">
-                        <button name="id" value="${course.id}" th:value="${admin.id}"
-                                class="btn btn-primary">Edit
-                        </button>
-                    </form>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                    <p th:if="${#fields.hasErrors('detailsPageLink')}" th:errors="*{detailsPageLink}"></p>
+                </div>
+
+
+                <p>
+                    <input type="submit" value="Submit"
+                           class="btn btn-primary form-control"/> <br/> <br/> <input
+                        type="reset" value="Reset" class="btn btn-danger form-control"/>
+                </p>
+
+            </form>
+        </div>
+
     </div>
 </div>
 </body>

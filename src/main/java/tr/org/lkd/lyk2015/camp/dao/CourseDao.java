@@ -13,10 +13,12 @@ import java.util.List;
 public class CourseDao extends GenericDao<Course> {
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Course> getAll() {
 
         final Session session = sessionFactory.getCurrentSession();
         final Criteria criteria = session.createCriteria(type);
+        criteria.add(Restrictions.eq("deleted", false));
         criteria.add(Restrictions.eq("active", true));
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         criteria.setFetchMode("*", FetchMode.JOIN);

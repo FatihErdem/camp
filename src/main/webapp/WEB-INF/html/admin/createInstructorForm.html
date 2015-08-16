@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div th:fragment="content">
+    <form action="#" th:action="@{/instructors/create}" th:object="${instructor}" method="post">
+        <table>
+            <tr>
+                <td>Name: </td>
+                <td><input type="text" class="form-control" th:value="${instructor.name}" th:field="*{name}"></td>
+            </tr>
+
+            <tr>
+                <td>Surname: </td>
+                <td><input type="text" class="form-control" th:value="${instructor.surname}" th:field="*{surname}"></td>
+            </tr>
+
+            <tr>
+                <td>Birth : </td>
+                <td><input type="number" class="form-control" th:value="${instructor.birthDate}" th:field="*{birthDate}"></td>
+            </tr>
+
+            <tr>
+                <td>TCKN: </td>
+                <td><input th:type="number" class="form-control" th:value="${instructor.tckn}" th:field="*{tckn}"></td>
+            </tr>
+
+            <tr>
+                <td>Email: </td>
+                <td><input th:type="text" class="form-control" th:value="${instructor.email}" th:field="*{email}"></td>
+            </tr>
+
+            <tr>
+                <td>Password: </td>
+                <td><input th:type="password" class="form-control" th:value="${instructor.password}" th:field="*{password}"></td>
+            </tr>
+
+            <tr>
+                <td>Telephone: </td>
+                <td><input th:type="number" class="form-control" th:value="${instructor.phone}" th:field="*{phone}"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input th:type="submit" class="btn btn-success"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+</div>
+</body>
+</html>

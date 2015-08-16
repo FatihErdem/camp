@@ -1,5 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,56 +8,87 @@
 </head>
 <body>
 
-<div th:fragment="content">
-    <form action="#" th:action="@{/admins/create}" th:object="${admin}" method="post">
-        <table>
-            <tr>
-                <td>Name: </td>
-                <td><input type="text" class="form-control" th:value="${admin.name}" th:field="*{name}"></td>
-            </tr>
+<th:block th:fragment="content">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 well">
 
-            <tr>
-                <td>Surname: </td>
-                <td><input type="text" class="form-control" th:value="${admin.surname}" th:field="*{surname}"></td>
-            </tr>
 
-            <tr>
-                <td>Birth : </td>
-                <td><input type="number" class="form-control" th:value="${admin.birthDate}" th:field="*{birthDate}"></td>
-            </tr>
+            <h1>Admin Create Form</h1>
+            <!-- 	create form  start-->
 
-            <tr>
-                <td>TCKN: </td>
-                <td><input th:type="number" class="form-control" th:value="${admin.tckn}" th:field="*{tckn}"></td>
-            </tr>
+            <form action="#" th:action="@{/admins/create}" th:object="${admin}" method="post">
+                <div class="col-md-4">
 
-            <tr>
-                <td>Email: </td>
-                <td><input th:type="text" class="form-control" th:value="${admin.email}" th:field="*{email}"></td>
-            </tr>
+                    <div class="form-group">
+                        <label for="InputLkdNo">LKD NO</label> <input type="text"
+                                                                      class="form-control" id="lkdNo"
+                                                                      placeholder="LKD No"
+                                                                      th:field="*{lkdNo}" th:value="*{lkdNo}">
+                    </div>
 
-            <tr>
-                <td>Password: </td>
-                <td><input th:type="password" class="form-control" th:value="${admin.password}" th:field="*{password}"></td>
-            </tr>
+                    <div class="form-group">
+                        <label for="InputName">Name</label> <input type="text"
+                                                                   class="form-control" id="name" placeholder="Name"
+                                                                   th:field="*{name}" th:value="*{name}">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputSurname">Surname</label> <input type="text"
+                                                                         class="form-control" id="surname"
+                                                                         placeholder="Surname"
+                                                                         th:field="*{surname}"
+                                                                         th:value="*{surname}">
+                    </div>
 
-            <tr>
-                <td>LKD NO: </td>
-                <td><input th:type="number" class="form-control" th:value="${admin.lkdNo}" th:field="*{lkdNo}"></td>
-            </tr>
+                    <div class="form-group">
+                        <label for="InputEmail">Email address</label> <input type="email"
+                                                                             class="form-control" id="email"
+                                                                             placeholder="Email"
+                                                                             th:field="*{email}"
+                                                                             th:value="*{email}">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputPassword1">Password</label> <input
+                            type="password" class="form-control" id="password"
+                            placeholder="Password" th:field="*{password}" th:value="*{password}">
+                    </div>
 
-            <tr>
-                <td>Telephone: </td>
-                <td><input th:type="number" class="form-control" th:value="${admin.phone}" th:field="*{phone}"></td>
-            </tr>
+                    <!--Password Again:-->
+                    <div class="form-group">
+                        <label for="InputPassword2">Password Again</label> <input
+                            type="password" class="form-control" name="passwordAgain"
+                            placeholder="Password Again">
+                    </div>
 
-            <tr>
-                <td></td>
-                <td><input th:type="submit" class="btn btn-success"></td>
-            </tr>
-        </table>
-    </form>
-</div>
 
+                    <div class="form-group">
+                        <label for="InputBirthdate">BirthDate</label> <input type="number"
+                                                                             class="form-control" id="birthDate"
+                                                                             placeholder="Birth Date"
+                                                                             th:field="*{birthDate}"
+                                                                             th:value="*{birthDate}">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="InputLkdNo">Phone</label> <input type="text"
+                                                                     class="form-control" id="phone" placeholder="Phone Number"
+                                                                     th:field="*{phone}" th:value="*{phone}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="InputTckn">TC</label> <input type="text"
+                                                                 class="form-control" id="tckn" placeholder="TCKN"
+                                                                 th:field="*{tckn}" th:value="*{tckn}">
+                    </div>
+                    <button type="submit" class="btn btn-info" th:type="submit">Submit</button>
+
+                </div>
+            </form>
+
+            <!-- 	create form  stop-->
+        </div>
+    </div>
+
+</th:block>
 </body>
 </html>

@@ -1,0 +1,58 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div th:fragment="content">
+
+    <div class="container">
+        <div class="text-center"><h1>Instructors</h1></div>
+        <br>
+
+        <table class="table table-hover">
+            <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Birth Date</th>
+            <th>TC ID</th>
+            <th>E-mail</th>
+            <th>Phone</th>
+
+            </thead>
+            <tbody>
+            <tr th:each="instructor : ${instructorList}">
+
+                <td th:text="${instructor.id}"></td>
+
+                <td th:text="${instructor.name}"></td>
+
+                <td th:text="${instructor.surname}"></td>
+
+                <td th:text="${instructor.birthDate}"></td>
+
+                <td th:text="${instructor.tckn}"></td>
+
+                <td th:text="${instructor.email}"></td>
+
+                <td th:text="${instructor.phone}"></td>
+
+                <td>
+                    <form action="#" th:action="@{/instructors/update}" method="get">
+                        <button name="id" value="${instructor.id}" th:value="${instructor.id}"
+                                class="btn btn-primary">Edit
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

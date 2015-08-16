@@ -17,6 +17,7 @@ public abstract class AbstractUser extends AbstractBaseModel{
     private Long tckn;
     private String email;
     private String password;
+    private String phone;
 
     public String getPhone() {
         return phone;
@@ -25,8 +26,6 @@ public abstract class AbstractUser extends AbstractBaseModel{
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    private String phone;
 
     public String getName() {
         return name;

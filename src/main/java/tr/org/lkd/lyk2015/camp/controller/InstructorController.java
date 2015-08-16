@@ -43,7 +43,7 @@ public class InstructorController {
                                   BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return "admin/createAdminForm";
+            return "admin/createInstructorForm";
         }
 
         if (!passwordAgain.equals(instructor.getPassword())) {
@@ -51,7 +51,7 @@ public class InstructorController {
         }
         instructorService.create(instructor);
 
-        return "redirect:/admins";
+        return "redirect:/instructors";
 
     }
 }

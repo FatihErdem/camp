@@ -14,29 +14,6 @@ import tr.org.lkd.lyk2015.camp.model.Instructor;
 import java.util.List;
 
 @Repository
-public class InstructorDao {
-
-    @Autowired
-    protected SessionFactory sessionFactory;
-
-    protected Logger logger = LoggerFactory.getLogger(getClass());
-
-    public Long create(final Instructor instructor){
-
-        final Session session = sessionFactory.getCurrentSession();
-        return (Long) session.save(instructor);
-    }
-
-    @SuppressWarnings("unchecked")
-    public List<Instructor> getAll(){
-
-        final Session session = sessionFactory.getCurrentSession();
-        final Criteria criteria = session.createCriteria(Instructor.class);
-        criteria.add(Restrictions.eq("deleted", false));
-        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        criteria.setFetchMode("*", FetchMode.JOIN);
-
-        return criteria.list();
-    }
+public class InstructorDao extends GenericDao<Instructor> {
 
 }

@@ -14,29 +14,7 @@ import tr.org.lkd.lyk2015.camp.model.Admin;
 import java.util.List;
 
 @Repository
-public class AdminDao {
+public class AdminDao extends GenericDao<Admin> {
 
-    @Autowired
-    protected SessionFactory sessionFactory;
-
-    protected Logger logger = LoggerFactory.getLogger(getClass());
-
-    public Long create(final Admin admin){
-
-        final Session session = sessionFactory.getCurrentSession();
-        return (Long) session.save(admin);
-    }
-
-    @SuppressWarnings("unchecked")
-    public List<Admin> getAll(){
-
-        final Session session = sessionFactory.getCurrentSession();
-        final Criteria criteria = session.createCriteria(Admin.class);
-        criteria.add(Restrictions.eq("deleted", false));
-        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        criteria.setFetchMode("*", FetchMode.JOIN);
-
-        return criteria.list();
-    }
 
 }

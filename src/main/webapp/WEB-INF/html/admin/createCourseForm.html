@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div th:fragment="content">
+
+    <div class="container">
+        <div class="text-center">
+            <h1>Courses</h1>
+        </div>
+        <br>
+
+        <table class="table table-hover">
+            <thead>
+
+            <th>Name</th>
+            <th>Description</th>
+            <th>Prerequisites</th>
+            <th>detailPageLink</th>
+
+            </thead>
+            <tbody>
+            <tr th:each="course : ${courseList}">
+
+                <td th:text="${course.name}"></td>
+
+                <td th:text="${course.description}"></td>
+
+                <td th:text="${course.prerequisites}"></td>
+
+                <td><a th:href="${course.detailPageLink}">More Info</a></td>
+
+                <td><input type="checkbox" class="checkbox" name="active"
+                           th:checked="${course.active}"/></td>
+
+                <td>
+                    <form action="#" th:action="@{/courses/update}" method="get">
+                        <button name="id" value="${course.id}" th:value="${admin.id}"
+                                class="btn btn-primary">Edit
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

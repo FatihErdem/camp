@@ -16,5 +16,4 @@ import java.util.List;
 @Repository
 public class AdminDao extends GenericDao<Admin> {
 
-
 }

@@ -104,7 +104,6 @@ public class GenericDao<T extends AbstractBaseModel> {
 
         final Session session = sessionFactory.getCurrentSession();
         final Criteria criteria = session.createCriteria(type);
-        criteria.add(Restrictions.eq("deleted", false));
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         criteria.setFetchMode("*", FetchMode.JOIN);
 

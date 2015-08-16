@@ -9,7 +9,6 @@ import java.util.Set;
 @Entity
 public class Course extends AbstractBaseModel{
 
-
     private String name;
     private String description;
     private String prerequisites;
@@ -19,8 +18,6 @@ public class Course extends AbstractBaseModel{
 
     @ManyToMany
     private Set<Instructor> instructors;
-
-
 
     public String getName() {
         return name;

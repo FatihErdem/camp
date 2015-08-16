@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<th:block th:fragment="content">
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2 well">
+            <h1>Test Page</h1>
+            <p th:text="${message}"></p>
+
+        </div>
+
+
+    </div>
+
+
+</th:block>
+
+</body>
+</html>

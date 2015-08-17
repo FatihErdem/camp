@@ -61,12 +61,14 @@ public class InstructorController {
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String getInstructorUpdate(@PathVariable(value = "id") Long id, Model model) {
+    public String getAdminUpdate(@PathVariable("id") Long id,
+                                 Model model,
+                                 @RequestParam(value = "message", required = false) String message) {
 
         Instructor instructor = instructorService.getById(id);
         model.addAttribute("instructor", instructor);
-        model.addAttribute("course", courseService.getAll());
-
+        model.addAttribute("courses", courseService.getAll());
+        model.addAttribute("message", message);
         return "admin/updateInstructorForm";
     }
 

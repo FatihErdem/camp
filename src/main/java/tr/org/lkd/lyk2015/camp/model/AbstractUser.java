@@ -1,14 +1,12 @@
 package tr.org.lkd.lyk2015.camp.model;
 
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 //Abstract oldugu icin entity kullanilmayacak. Ancak diger yerlerde kullanilacagi icin su kullanilir
 
 @MappedSuperclass
-public abstract class AbstractUser extends AbstractBaseModel{
+public abstract class AbstractUser extends AbstractBaseModel {
 
 
     private String name;

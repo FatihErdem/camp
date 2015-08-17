@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import tr.org.lkd.lyk2015.camp.model.Course;
 import tr.org.lkd.lyk2015.camp.service.CourseService;
 
@@ -19,7 +22,7 @@ public class CourseController {
     public CourseService courseService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String getCourseList(Model model){
+    public String getCourseList(Model model) {
 
         List<Course> courses = courseService.getAll();
         model.addAttribute("courseList", courses);
@@ -28,7 +31,7 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String getCourseCreate(@ModelAttribute Course course){
+    public String getCourseCreate(@ModelAttribute Course course) {
 
         return "admin/createCourseForm";
     }

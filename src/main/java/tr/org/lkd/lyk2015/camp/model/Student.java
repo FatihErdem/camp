@@ -25,16 +25,16 @@ public class Student extends AbstractUser {
         this.sex = sex;
     }
 
-    private enum Sex {
-        MALE,
-        FEMALE;
-    }
-
     public Set<ApplicationForm> getApplicationForms() {
         return applicationForms;
     }
 
     public void setApplicationForms(Set<ApplicationForm> applicationForms) {
         this.applicationForms = applicationForms;
+    }
+
+    private enum Sex {
+        MALE,
+        FEMALE;
     }
 }

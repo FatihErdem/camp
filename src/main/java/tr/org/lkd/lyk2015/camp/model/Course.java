@@ -1,14 +1,12 @@
 package tr.org.lkd.lyk2015.camp.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Course extends AbstractBaseModel{
+public class Course extends AbstractBaseModel {
 
     private String name;
     private String description;

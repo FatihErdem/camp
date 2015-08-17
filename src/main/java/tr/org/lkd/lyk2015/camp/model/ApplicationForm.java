@@ -6,38 +6,24 @@ import java.util.Set;
 
 /**
  * This entity represents an application form which is submitted by a Student.
- *
+ * <p/>
  * Same student may submit different forms in different years.
- *
  */
 @Entity
-public class ApplicationForm extends AbstractBaseModel{
-
-    public enum WorkStatus {
-        WORKING, STUDENT, NOT_WORKING
-    }
+public class ApplicationForm extends AbstractBaseModel {
 
     private Integer year;
-
     @Enumerated(EnumType.STRING)
     private WorkStatus workStatus;
-
     private Boolean officer = false;
-
     private String corporation;
-
     private String workDetails;
-
     private Integer englishLevel;
-
     private String githubLink;
-
     @OneToMany
     private Set<Course> preferredCourses = new HashSet<>();
-
     @ManyToOne
     private Student owner;
-
     private boolean needAccomodation;
 
     public WorkStatus getWorkStatus() {
@@ -74,6 +60,10 @@ public class ApplicationForm extends AbstractBaseModel{
 
     public int getEnglishLevel() {
         return englishLevel;
+    }
+
+    public void setEnglishLevel(Integer englishLevel) {
+        this.englishLevel = englishLevel;
     }
 
     public void setEnglishLevel(int englishLevel) {
@@ -128,7 +118,7 @@ public class ApplicationForm extends AbstractBaseModel{
         this.owner = owner;
     }
 
-    public void setEnglishLevel(Integer englishLevel) {
-        this.englishLevel = englishLevel;
+    public enum WorkStatus {
+        WORKING, STUDENT, NOT_WORKING
     }
 }

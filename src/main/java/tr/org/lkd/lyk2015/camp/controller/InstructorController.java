@@ -77,7 +77,6 @@ public class InstructorController {
                                        @ModelAttribute Instructor instructor,
                                        Model model) {
 
-
         instructorService.update(instructor);
         return "redirect:/instructors";
     }

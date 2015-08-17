@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import tr.org.lkd.lyk2015.camp.model.AbstractBaseModel;
 
 import java.lang.reflect.ParameterizedType;
@@ -34,19 +33,19 @@ public class GenericDao<T extends AbstractBaseModel> {
      * call methods that use Criteria without explicit class parameters. <br>
      * <br>
      * Note that this method is not optional! You have to use this.
-     *
+     * <p/>
      * <br>
      * <br>
-     *
+     * <p/>
      * <strong>If not used:</strong> <br>
      * <code>
-     * 	session.createCriteria(clazz); // clazz should come as method parameter
+     * session.createCriteria(clazz); // clazz should come as method parameter
      * </code> <br>
      * <br>
-     *
+     * <p/>
      * <strong>If used:</strong> <br>
      * <code>
-     * 	session.createCriteria(this.type); // no need for clazz parameter in method
+     * session.createCriteria(this.type); // no need for clazz parameter in method
      * </code>
      */
     @SuppressWarnings("unchecked")

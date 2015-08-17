@@ -8,10 +8,7 @@ import tr.org.lkd.lyk2015.camp.model.Course;
 import tr.org.lkd.lyk2015.camp.model.Instructor;
 
 import javax.transaction.Transactional;
-import java.io.Serializable;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Transactional
 @Service
@@ -27,10 +24,7 @@ public class InstructorService extends GenericService<Instructor> {
 
         List<Course> courses = courseDao.getByIds(ids);
 
-        Set<Course> setCourse = new HashSet();
-        setCourse.addAll(courses);
-
-        instructor.setCourses(setCourse);
+        instructor.getCourses().addAll(courses);
 
         instructorDao.create(instructor);
     }

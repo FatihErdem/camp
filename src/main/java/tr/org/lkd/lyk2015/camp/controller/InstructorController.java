@@ -65,12 +65,16 @@ public class InstructorController {
 
         Instructor instructor = instructorService.getById(id);
         model.addAttribute("instructor", instructor);
+        model.addAttribute("course", courseService.getAll());
 
         return "admin/updateInstructorForm";
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public String postInstructorUpdate(@PathVariable(value = "id") Long id, @ModelAttribute Instructor instructor, Model model) {
+    public String postInstructorUpdate(@PathVariable(value = "id") Long id,
+                                       @ModelAttribute Instructor instructor,
+                                       Model model) {
+
 
         instructorService.update(instructor);
         return "redirect:/instructors";

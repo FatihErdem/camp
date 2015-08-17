@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity
 public class Instructor extends AbstractUser {
 
-    @ManyToMany(mappedBy = "instructors")
+    @ManyToMany
     private Set<Course> courses = new HashSet<>();
 
     public Set<Course> getCourses() {

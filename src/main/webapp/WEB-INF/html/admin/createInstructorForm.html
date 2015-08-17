@@ -1,5 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +12,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2 well">
             <h1>Instructor Create Form </h1>
-            <p th:text="${message}" />
+
+            <p th:text="${message}"/>
 
 
             <!-- 	create form  start-->
@@ -46,7 +47,7 @@
                         <label for="InputPassword2">Password Again</label>
                         <input type="password" class="form-control" name="passwordAgain"
                                placeholder="Password Again">
-                        <label th:text="${message}" th:if="${message} != null" />
+                        <label th:text="${message}" th:if="${message} != null"/>
                     </div>
 
                     <div class="form-group">
@@ -58,7 +59,7 @@
                     <div class="form-group">
                         <label for="phone">Phone</label> <input
                             type="text" class="form-control" id="phone"
-                            placeholder="phone"  th:field="*{phone}">
+                            placeholder="phone" th:field="*{phone}">
                     </div>
 
                     <div class="form-group">
@@ -66,9 +67,19 @@
                             type="text" class="form-control" id="tckn"
                             placeholder="TC KN" th:field="*{tckn}">
                     </div>
-                    <button type="submit" class="btn btn-info">Submit</button>
 
+                    <div class="form-group">
+                        <select multiple name="courseIds" class="form-group form-control">
+                            <option   th:each="course : ${courseIds}"
+                                    th:value="${course.id}"
+                                    th:text="${course.name}">
+                            </option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-info">Submit</button>
                 </div>
+
+
             </form>
 
             <!-- 	create form  stop-->

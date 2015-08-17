@@ -25,4 +25,14 @@ public class CourseDao extends GenericDao<Course> {
 
         return criteria.list();
     }
+
+
+    @SuppressWarnings("unchecked")
+    public List<Course> getByIds(List<Long> ids) {
+        // TODO Auto-generated method stub
+        Criteria criteria = createCriteria();
+        criteria.add(Restrictions.in("id", ids));
+
+        return criteria.list();
+    }
 }

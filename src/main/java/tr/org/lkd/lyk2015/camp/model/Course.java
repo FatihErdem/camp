@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,8 +17,8 @@ public class Course extends AbstractBaseModel{
 
     private Boolean active = true;
 
-    @ManyToMany
-    private Set<Instructor> instructors;
+    @ManyToMany(mappedBy = "courses")
+    private Set<Instructor> instructors = new HashSet<>();
 
     public String getName() {
         return name;

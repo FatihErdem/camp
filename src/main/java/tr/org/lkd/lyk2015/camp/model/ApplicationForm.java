@@ -17,8 +17,6 @@ public class ApplicationForm extends AbstractBaseModel{
         WORKING, STUDENT, NOT_WORKING
     }
 
-
-
     private Integer year;
 
     @Enumerated(EnumType.STRING)

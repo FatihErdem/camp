@@ -37,14 +37,12 @@
                 <td><a th:href="${course.detailsPageLink}">More Info</a></td>
 
                 <!--<td><input type="checkbox" class="checkbox" name="active"-->
-                           <!--th:checked="${course.active}"/></td>-->
+                <!--th:checked="${course.active}"/></td>-->
 
                 <td>
-                    <form action="#" th:action="@{/courses/update}" method="get">
-                        <button name="id" value="${course.id}" th:value="${course.id}"
-                                class="btn btn-primary">Edit
-                        </button>
-                    </form>
+                    <a th:href="@{/courses/update/__${course.id}__}" method="get">
+                        <button class="btn btn-primary">Edit</button>
+                    </a>
                 </td>
             </tr>
             </tbody>

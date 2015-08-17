@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import tr.org.lkd.lyk2015.camp.model.Course;
 import tr.org.lkd.lyk2015.camp.service.CourseService;
 
@@ -47,6 +44,21 @@ public class CourseController {
         courseService.create(course);
 
         return "redirect:/courses";
+    }
 
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String getCourseUpdate(@PathVariable(value = "id") Long id, Model model) {
+
+        Course course = courseService.getById(id);
+        model.addAttribute("course", course);
+
+        return "admin/updateCourseForm";
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public String postCourseUpdate(@PathVariable("id") Long id, @ModelAttribute Course course, Model model) {
+
+        courseService.update(course);
+        return "redirect:/courses";
     }
 }

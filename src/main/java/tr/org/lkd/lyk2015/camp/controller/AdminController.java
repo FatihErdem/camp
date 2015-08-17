@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import tr.org.lkd.lyk2015.camp.model.Admin;
 import tr.org.lkd.lyk2015.camp.service.AdminService;
 
@@ -54,8 +51,8 @@ public class AdminController {
         return "redirect:/admins";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String getAdminUpdate(@RequestParam("id") Long id, Model model) {
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String getAdminUpdate(@PathVariable(value = "id") Long id, Model model) {
 
         Admin admin = adminService.getById(id);
         model.addAttribute("admin", admin);
@@ -63,8 +60,8 @@ public class AdminController {
         return "admin/updateAdminForm";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String postAdminUpdate(@RequestParam("id") Long id, @ModelAttribute Admin admin, Model model) {
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public String postAdminUpdate(@PathVariable(value = "id") Long id, @ModelAttribute Admin admin, Model model) {
 
         adminService.update(admin);
         return "redirect:/admins";

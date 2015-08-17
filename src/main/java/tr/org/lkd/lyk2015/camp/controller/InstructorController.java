@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import tr.org.lkd.lyk2015.camp.model.Instructor;
 import tr.org.lkd.lyk2015.camp.service.InstructorService;
 
@@ -52,6 +49,21 @@ public class InstructorController {
         instructorService.create(instructor);
 
         return "redirect:/instructors";
+    }
 
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String getInstructorUpdate(@PathVariable(value = "id") Long id, Model model) {
+
+        Instructor instructor = instructorService.getById(id);
+        model.addAttribute("instructor", instructor);
+
+        return "admin/updateInstructorForm";
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public String postInstructorUpdate(@PathVariable(value = "id") Long id, @ModelAttribute Instructor instructor, Model model) {
+
+        instructorService.update(instructor);
+        return "redirect:/instructors";
     }
 }

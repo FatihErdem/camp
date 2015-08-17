@@ -16,7 +16,7 @@
             <h1>Admin Create Form</h1>
             <!-- 	create form  start-->
 
-            <form action="#" th:action="@{'/admins/update'(id=${admin.id})}" th:object="${admin}" method="post">
+            <form th:href="@{/admins/update/__${admin.id}__}" th:object="${admin}" method="post">
                 <div class="col-md-4">
 
                     <div class="form-group">
@@ -71,7 +71,8 @@
 
                     <div class="form-group">
                         <label for="InputLkdNo">Phone</label> <input type="text"
-                                                                     class="form-control" id="phone" placeholder="Phone Number"
+                                                                     class="form-control" id="phone"
+                                                                     placeholder="Phone Number"
                                                                      th:field="*{phone}" th:value="*{phone}">
                     </div>
 

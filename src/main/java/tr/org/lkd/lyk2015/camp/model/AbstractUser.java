@@ -9,12 +9,9 @@ import javax.validation.constraints.Size;
 @MappedSuperclass
 public abstract class AbstractUser extends AbstractBaseModel {
 
-
     private String name;
     private String surname;
     private Integer birthDate;
-
-    @Size(min = 11, max = 11)
     private Long tckn;
     private String email;
     private String password;

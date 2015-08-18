@@ -10,10 +10,16 @@
                 <div class="form-group">
                     <label for="email" class="col-lg-2 col-md-2 control-label">E-postanız</label>
 
-                    <div class="col-lg-10 col-md-10">
-                        <input type="email" class="form-control floating-label" id="email" name="email"
-                               placeholder="E-posta" th:field="*{student.email}" th:value="*{student.email}" >
+                    <div class="col-lg-10 col-md-10" th:errorclass="has-error" name="student.email">
+                        <input type="email"
+                               class="form-control floating-label"
+                               id="email"
+                               placeholder="E-posta"
+                               th:field="*{student.email}"
+                               th:value="*{student.email}"
+                                />
                         <span class="help-block">Ön koşul sınavında verdiğiniz eposta ile aynı olmalı!</span>
+                        <p th:if="${#fields.hasErrors('student.email')}" th:errors="*{student.email}" class="text-danger"></p>
                     </div>
                 </div>
 
@@ -44,10 +50,15 @@
                     <div class="form-group">
                         <label for="citizenshipNumber" class="col-lg-2 col-md-2 control-label">Tc Kimlik No</label>
 
-                        <div class="col-lg-10 col-md-10">
-                            <input type="number" th:field="*{student.tckn}" th:value="*{student.tckn}"
-                                   class="form-control floating-label" id="citizenshipNumber"
-                                   name="citizenshipNumber" placeholder="Tc Kimlik No" >
+                        <div class="col-lg-10 col-md-10" th:errorclass="has-error" name="student.tckn">
+                            <input type="number"
+                                   th:field="*{student.tckn}"
+                                   th:value="*{student.tckn}"
+                                   class="form-control floating-label"
+                                   id="citizenshipNumber"
+                                   placeholder="Tc Kimlik No"
+                                    >
+                            <p th:if="${#fields.hasErrors('student.tckn')}" th:errors="*{student.tckn}" class="text-danger"></p>
                         </div>
                     </div>
 

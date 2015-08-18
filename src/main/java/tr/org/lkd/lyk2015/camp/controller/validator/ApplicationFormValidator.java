@@ -50,7 +50,6 @@ public class ApplicationFormValidator implements Validator {
 
         }
 
-
         Student student = applicationFormDto.getStudent();
 
         boolean tcknValid = tcknValidationService.validate(student.getName(), student.getSurname(), student.getBirthDate(), student.getTckn());

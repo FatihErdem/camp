@@ -8,7 +8,7 @@ public class MockTcknValidationService implements TcknValidationService {
     @Override
     public boolean validate(String name, String surname, Integer birthDate, Long tckn) {
 
-        if(tckn.equals(11111111111L)){
+        if (tckn.equals(11111111111L)) {
             return false;
         }
         return true;

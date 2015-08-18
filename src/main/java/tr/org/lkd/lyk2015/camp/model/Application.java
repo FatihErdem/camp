@@ -17,26 +17,17 @@ public class Application extends AbstractBaseModel {
     @Max(2005)
     @Min(1940)
     private Integer year;
-
-    public enum WorkStatus {
-        WORKING, STUDENT, NOT_WORKING
-    }
-
     @Enumerated(EnumType.STRING)
     private WorkStatus workStatus;
-
     private Boolean officer = false;
     private String corporation;
     private String workDetails;
     private Integer englishLevel = 0;
     private String githubLink;
-
     @OneToMany
     private Set<Course> preferredCourses = new HashSet<>();
-
     @ManyToOne
     private Student owner;
-
     private boolean needAccomodation;
 
     public WorkStatus getWorkStatus() {
@@ -75,11 +66,11 @@ public class Application extends AbstractBaseModel {
         return englishLevel;
     }
 
-    public void setEnglishLevel(int englishLevel) {
+    public void setEnglishLevel(Integer englishLevel) {
         this.englishLevel = englishLevel;
     }
 
-    public void setEnglishLevel(Integer englishLevel) {
+    public void setEnglishLevel(int englishLevel) {
         this.englishLevel = englishLevel;
     }
 
@@ -129,5 +120,9 @@ public class Application extends AbstractBaseModel {
 
     public void setOwner(Student owner) {
         this.owner = owner;
+    }
+
+    public enum WorkStatus {
+        WORKING, STUDENT, NOT_WORKING
     }
 }

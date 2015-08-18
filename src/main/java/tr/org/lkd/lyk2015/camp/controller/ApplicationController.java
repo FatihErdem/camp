@@ -47,6 +47,6 @@ public class ApplicationController {
                            Model model){
 
         model.addAttribute("courses", this.courseService.getAll());
-        return "applicationForm";
+        return "redirect:/";
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.validation.Validator;
 import tr.org.lkd.lyk2015.camp.model.Application;
 import tr.org.lkd.lyk2015.camp.model.Student;
 import tr.org.lkd.lyk2015.camp.model.dto.ApplicationFormDto;
+import tr.org.lkd.lyk2015.camp.service.BlackListValidationService;
+import tr.org.lkd.lyk2015.camp.service.ExamValidationService;
 import tr.org.lkd.lyk2015.camp.service.TcknValidationService;
 
 import java.util.Collections;
@@ -19,6 +21,12 @@ public class ApplicationFormValidator implements Validator {
 
     @Autowired
     TcknValidationService tcknValidationService;
+
+    @Autowired
+    BlackListValidationService blackListValidationService;
+
+    @Autowired
+    ExamValidationService examValidationService;
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -52,10 +60,22 @@ public class ApplicationFormValidator implements Validator {
 
         Student student = applicationFormDto.getStudent();
 
-        boolean tcknValid = tcknValidationService.validate(student.getName(), student.getSurname(), student.getBirthDate(), student.getTckn());
+        boolean tcknValid = tcknValidationService.validate(student.getName(),
+                student.getSurname(), student.getBirthDate(), student.getTckn());
 
-        if(!tcknValid) {
+        if (!tcknValid) {
             errors.rejectValue("student.tckn", "error.tcknInvalid", "TC Kimlik Numarasi Hatali");
+        }
+
+        boolean blackListValid = blackListValidationService.validate(student.getName(),
+                student.getSurname(), student.getTckn(), student.getEmail());
+        if(!blackListValid) {
+            errors.rejectValue("student.tckn", "error.blackList", "Kara Listedesiniz. Yuru git lan");
+        }
+
+        boolean examValid = examValidationService.validate(student.getEmail(), student.getTckn());
+        if(!examValid) {
+            errors.rejectValue("student.email", "error.examFail", "Sinavi gecemediniz");
         }
     }
 }

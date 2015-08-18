@@ -2,6 +2,7 @@ package tr.org.lkd.lyk2015.camp.model;
 
 
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.Size;
 
 //Abstract oldugu icin entity kullanilmayacak. Ancak diger yerlerde kullanilacagi icin su kullanilir
 
@@ -12,6 +13,8 @@ public abstract class AbstractUser extends AbstractBaseModel {
     private String name;
     private String surname;
     private Integer birthDate;
+
+    @Size(min = 11, max = 11)
     private Long tckn;
     private String email;
     private String password;

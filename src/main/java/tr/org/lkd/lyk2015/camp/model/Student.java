@@ -15,7 +15,7 @@ public class Student extends AbstractUser {
     private Sex sex;
 
     @OneToMany(mappedBy = "owner")
-    private Set<ApplicationForm> applicationForms = new HashSet<>();
+    private Set<Application> applications = new HashSet<>();
 
     public Sex getSex() {
         return sex;
@@ -25,12 +25,12 @@ public class Student extends AbstractUser {
         this.sex = sex;
     }
 
-    public Set<ApplicationForm> getApplicationForms() {
-        return applicationForms;
+    public Set<Application> getApplications() {
+        return applications;
     }
 
-    public void setApplicationForms(Set<ApplicationForm> applicationForms) {
-        this.applicationForms = applicationForms;
+    public void setApplications(Set<Application> applications) {
+        this.applications = applications;
     }
 
     private enum Sex {

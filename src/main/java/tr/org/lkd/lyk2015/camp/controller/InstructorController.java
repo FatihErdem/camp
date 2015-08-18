@@ -66,7 +66,7 @@ public class InstructorController {
                                  @RequestParam(value = "message", required = false) String message) {
 
         Instructor instructor = instructorService.getById(id);
-        model.addAttribute("instructor", instructor);
+        model.addAttribute("instructor", instructorService.getInstructorWithCourses(id));
         model.addAttribute("courses", courseService.getAll());
         model.addAttribute("message", message);
         return "admin/updateInstructorForm";

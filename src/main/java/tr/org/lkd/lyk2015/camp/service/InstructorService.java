@@ -23,10 +23,17 @@ public class InstructorService extends GenericService<Instructor> {
     public void create(Instructor instructor, List<Long> ids) {
 
         List<Course> courses = courseDao.getByIds(ids);
-
         instructor.getCourses().addAll(courses);
 
         instructorDao.create(instructor);
     }
+
+    public Instructor getInstructorWithCourses(Long id) {
+
+        Instructor instructor = instructorDao.getByIdWithCourses(id);
+
+        return instructor;
+    }
+
 
 }

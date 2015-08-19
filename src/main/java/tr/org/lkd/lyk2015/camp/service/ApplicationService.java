@@ -52,7 +52,7 @@ public class ApplicationService extends GenericService<Application> {
 
         // Check if user exists
         Student studentFromDb = studentDao.getUserByTckn(student.getTckn());
-        if(studentFromDb == null){
+        if (studentFromDb==null) {
             studentDao.create(student);
             studentFromDb = student;
         }
@@ -61,4 +61,17 @@ public class ApplicationService extends GenericService<Application> {
 
         applicationDao.create(application);
     }
+
+    public boolean validate(String uuid) {
+
+        Application application = applicationDao.getByUuid(uuid);
+        if (application==null) {
+            return false;
+        } else {
+            application.setValidated(true);
+            applicationDao.update(application);
+            return true;
+        }
+    }
+
 }

@@ -29,14 +29,17 @@ public class Application extends AbstractBaseModel {
     private String uuid;
     private Boolean validated = false;
 
+    public WorkStatus getWorkStatus() {
+        return workStatus;
+    }
 
-    @OneToMany
+    @ManyToMany
     private Set<Course> preferredCourses = new HashSet<>();
     @ManyToOne
     private Student owner;
     private boolean needAccomodation;
 
-    public WorkStatus getWorkStatus() {
+    public WorkStatus getWorokStatus() {
         return workStatus;
     }
 

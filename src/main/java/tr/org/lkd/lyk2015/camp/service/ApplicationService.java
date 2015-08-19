@@ -42,7 +42,7 @@ public class ApplicationService extends GenericService<Application> {
         String uuid = UUID.randomUUID().toString();
         String url = URL_BASE+uuid;
 
-        // TODO Send Confirmation Email
+        emailService.sendEmail(student.getEmail(), "LYK Basvuru Onayi", url);
 
         application.setUuid(uuid);
 

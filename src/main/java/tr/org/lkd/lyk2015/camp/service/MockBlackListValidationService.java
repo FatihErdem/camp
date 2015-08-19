@@ -2,7 +2,10 @@ package tr.org.lkd.lyk2015.camp.service;
 
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional // Diger Mocklarda transactional olmayacak. cunku blacklist kendi db'mizde olacak.
 public class MockBlackListValidationService implements BlackListValidationService {
 
     @Override

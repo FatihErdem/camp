@@ -1,5 +1,7 @@
 package tr.org.lkd.lyk2015.camp.model;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -25,6 +27,8 @@ public class Application extends AbstractBaseModel {
     private Integer englishLevel = 0;
     private String githubLink;
     private String uuid;
+    private Boolean validated = false;
+
 
     @OneToMany
     private Set<Course> preferredCourses = new HashSet<>();
@@ -134,5 +138,13 @@ public class Application extends AbstractBaseModel {
 
     public enum WorkStatus {
         WORKING, STUDENT, NOT_WORKING
+    }
+
+    public Boolean getValidated() {
+        return validated;
+    }
+
+    public void setValidated(Boolean validated) {
+        this.validated = validated;
     }
 }

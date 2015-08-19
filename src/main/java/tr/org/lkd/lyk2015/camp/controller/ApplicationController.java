@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import tr.org.lkd.lyk2015.camp.controller.validator.ApplicationFormValidator;
 import tr.org.lkd.lyk2015.camp.model.Course;
 import tr.org.lkd.lyk2015.camp.model.dto.ApplicationFormDto;
+import tr.org.lkd.lyk2015.camp.service.ApplicationService;
 import tr.org.lkd.lyk2015.camp.service.CourseService;
 
 import javax.validation.Valid;
@@ -22,10 +23,13 @@ import java.util.List;
 public class ApplicationController {
 
     @Autowired
-    CourseService courseService;
+    private CourseService courseService;
 
     @Autowired
     private ApplicationFormValidator applicationFormValidator;
+
+    @Autowired
+    private ApplicationService applicationService;
 
     @InitBinder
     protected void InitBinder(final WebDataBinder binder){
@@ -44,13 +48,16 @@ public class ApplicationController {
     @RequestMapping(value = "", method = RequestMethod.POST)
     public String postAdminCreate(@ModelAttribute @Valid ApplicationFormDto applicationFormDto,
                                   BindingResult bindingResult, Model model) {
-        // bindingresult her zaman solundaki formun hatalarýný alýr
+
         model.addAttribute("courses", this.courseService.getAll());
         if (bindingResult.hasErrors()) {
+            model.addAttribute("courses", courseService.getAll());
             return "applicationForm";
-        }
-        model.addAttribute("message", "kaydýnýz baþarýlý");
+        }else {
+            applicationService.create(applicationFormDto);
+            return "applicationSuccess";
 
-        return "redirect:/application";
+        }
+
     }
 }

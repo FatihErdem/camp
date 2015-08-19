@@ -74,16 +74,16 @@ public class ApplicationFormValidator implements Validator {
 
         boolean blackListValid = blackListValidationService.validate(student.getName(),
                 student.getSurname(), student.getTckn(), student.getEmail());
-        if(!blackListValid) {
+        if (!blackListValid) {
             errors.rejectValue("student.tckn", "error.blackList", "Kara Listedesiniz. Yuru git lan");
         }
 
         boolean examValid = examValidationService.validate(student.getEmail(), student.getTckn());
-        if(!examValid) {
+        if (!examValid) {
             errors.rejectValue("student.email", "error.examFail", "Sinavi gecemediniz");
         }
 
-        boolean sendMail = this.emailService.sendEmail(student.getEmail(), "confirmation", "buraya týkla");
+        boolean sendMail = emailService.sendEmail(student.getEmail(), "confirmation", "buraya týkla");
         if (!sendMail) {
             errors.rejectValue("student.email", "error.checkConfirmation", "Email Gönderilemedi!");
         }

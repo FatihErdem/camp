@@ -42,11 +42,15 @@ public class ApplicationController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String postForm(@ModelAttribute @Valid ApplicationFormDto applicationFormDto,
-                           BindingResult bindingResult,
-                           Model model){
-
+    public String postAdminCreate(@ModelAttribute @Valid ApplicationFormDto applicationFormDto,
+                                  BindingResult bindingResult, Model model) {
+        // bindingresult her zaman solundaki formun hatalarýný alýr
         model.addAttribute("courses", this.courseService.getAll());
-        return "redirect:/";
+        if (bindingResult.hasErrors()) {
+            return "applicationForm";
+        }
+        model.addAttribute("message", "kaydýnýz baþarýlý");
+
+        return "redirect:/application";
     }
 }

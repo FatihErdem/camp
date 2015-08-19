@@ -8,6 +8,7 @@ import tr.org.lkd.lyk2015.camp.model.Application;
 import tr.org.lkd.lyk2015.camp.model.Student;
 import tr.org.lkd.lyk2015.camp.model.dto.ApplicationFormDto;
 import tr.org.lkd.lyk2015.camp.service.BlackListValidationService;
+import tr.org.lkd.lyk2015.camp.service.EmailService;
 import tr.org.lkd.lyk2015.camp.service.ExamValidationService;
 import tr.org.lkd.lyk2015.camp.service.TcknValidationService;
 
@@ -27,6 +28,10 @@ public class ApplicationFormValidator implements Validator {
 
     @Autowired
     ExamValidationService examValidationService;
+
+    @Autowired
+    private EmailService emailService;
+
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -76,6 +81,11 @@ public class ApplicationFormValidator implements Validator {
         boolean examValid = examValidationService.validate(student.getEmail(), student.getTckn());
         if(!examValid) {
             errors.rejectValue("student.email", "error.examFail", "Sinavi gecemediniz");
+        }
+
+        boolean sendMail = this.emailService.sendEmail(student.getEmail(), "confirmation", "buraya týkla");
+        if (!sendMail) {
+            errors.rejectValue("student.email", "error.checkConfirmation", "Email Gönderilemedi!");
         }
     }
 }

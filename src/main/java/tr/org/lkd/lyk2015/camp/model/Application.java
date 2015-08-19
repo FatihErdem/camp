@@ -24,6 +24,8 @@ public class Application extends AbstractBaseModel {
     private String workDetails;
     private Integer englishLevel = 0;
     private String githubLink;
+    private String uuid;
+
     @OneToMany
     private Set<Course> preferredCourses = new HashSet<>();
     @ManyToOne
@@ -66,11 +68,11 @@ public class Application extends AbstractBaseModel {
         return englishLevel;
     }
 
-    public void setEnglishLevel(Integer englishLevel) {
+    public void setEnglishLevel(int englishLevel) {
         this.englishLevel = englishLevel;
     }
 
-    public void setEnglishLevel(int englishLevel) {
+    public void setEnglishLevel(Integer englishLevel) {
         this.englishLevel = englishLevel;
     }
 
@@ -120,6 +122,14 @@ public class Application extends AbstractBaseModel {
 
     public void setOwner(Student owner) {
         this.owner = owner;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public enum WorkStatus {

@@ -37,7 +37,7 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String postAdminCreate(@ModelAttribute @Valid Course course,
+    public String postCourseCreate(@ModelAttribute @Valid Course course,
                                   BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {

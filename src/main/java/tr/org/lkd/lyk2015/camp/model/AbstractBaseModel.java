@@ -1,5 +1,7 @@
 package tr.org.lkd.lyk2015.camp.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,8 +16,8 @@ public abstract class AbstractBaseModel {
     @GeneratedValue
     private Long id;
 
-    @NotNull
     private Calendar createDate;
+
     private Calendar updateDate;
     private Calendar deleteDate;
 

@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,23 +20,17 @@ public class Application extends AbstractBaseModel {
 
     @Max(2005)
     @Min(1940)
-    @NotEmpty
     private Integer year;
 
-    @NotEmpty
     @Enumerated(EnumType.STRING)
     private WorkStatus workStatus;
 
-    @NotEmpty
     private Boolean officer = false;
 
-    @NotEmpty
     private String corporation;
 
-    @NotEmpty
     private String workDetails;
 
-    @NotEmpty
     private Integer englishLevel = 0;
 
     private String githubLink;
@@ -44,25 +39,22 @@ public class Application extends AbstractBaseModel {
 
     private Boolean validated = false;
 
-    @Size(min = 1, max = 3)
     @ManyToMany
     private Set<Course> preferredCourses = new HashSet<>();
 
-    @NotEmpty
     @ManyToOne
     private Student owner;
 
-    @NotEmpty
-    private boolean needAccomodation;
+    private boolean needAccomodation = false;
 
-    private boolean isSelected;
+    private boolean selected = false;
 
     public boolean isSelected() {
-        return isSelected;
+        return selected;
     }
 
     public void setIsSelected(boolean isSelected) {
-        this.isSelected = isSelected;
+        this.selected = isSelected;
     }
 
     public WorkStatus getWorkStatus() {

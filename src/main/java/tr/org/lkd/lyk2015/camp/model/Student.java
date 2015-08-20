@@ -1,6 +1,5 @@
 package tr.org.lkd.lyk2015.camp.model;
 
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
@@ -13,7 +12,6 @@ import java.util.Set;
 @Entity
 public class Student extends AbstractUser {
 
-    @NotEmpty
     @Enumerated(EnumType.STRING)
     private Sex sex;
 

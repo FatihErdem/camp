@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 public class Admin extends AbstractUser {
 
     @Column(unique = true)
-    @NotEmpty
     private String lkdNo;
 
     public String getLkdNo() {

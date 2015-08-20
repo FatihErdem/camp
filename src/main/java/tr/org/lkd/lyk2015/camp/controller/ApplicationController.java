@@ -69,5 +69,9 @@ public class ApplicationController {
         }
     }
 
+//    @RequestMapping(value = "/list", method = RequestMethod.GET)
+//    public String getApplicationList(@ModelAttribute ){
+//
+//    }
 
 }

@@ -1,32 +1,33 @@
 package tr.org.lkd.lyk2015.camp.model;
 
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import java.util.Collection;
 
 //Abstract oldugu icin entity kullanilmayacak. Ancak diger yerlerde kullanilacagi icin su kullanilir
 
 @MappedSuperclass
-public abstract class AbstractUser extends AbstractBaseModel {
+public abstract class AbstractUser extends AbstractBaseModel implements UserDetails {
 
-    @NotEmpty
     private String name;
-    @NotEmpty
+
     private String surname;
-    @NotEmpty
+
     private Integer birthDate;
-    @NotEmpty
+
     @Column(unique = true)
     private Long tckn;
+
     @Column(unique = true)
-    @NotEmpty
     private String email;
-    @NotEmpty
+
     private String password;
+
     @Column(unique = true)
-    @NotEmpty
     private String phone;
 
     public String getPhone() {
@@ -83,5 +84,35 @@ public abstract class AbstractUser extends AbstractBaseModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return getEmail();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

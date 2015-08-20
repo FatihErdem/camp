@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div th:fragment="content">
+
+    <div class="container">
+        <div class="text-center"><h1>Applications</h1></div>
+        <br>
+
+        <table class="table table-hover">
+            <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Birth Date</th>
+            <th>TC ID</th>
+            <th>E-mail</th>
+            <th>Phone</th>
+
+            </thead>
+            <tbody>
+            <tr th:each="application : ${applicationList}">
+
+                <td th:text="${application.id}"></td>
+
+                <td th:text="${application.name}"></td>
+
+                <td th:text="${application.surname}"></td>
+
+                <td th:text="${application.birthDate}"></td>
+
+                <td th:text="${application.tckn}"></td>
+
+                <td th:text="${application.email}"></td>
+
+                <td th:text="${application.phone}"></td>
+
+
+                <td>
+                    <a th:href="@{/admins/update/__${admin.id}__}" method="get">
+                        <button class="btn btn-primary">Edit</button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

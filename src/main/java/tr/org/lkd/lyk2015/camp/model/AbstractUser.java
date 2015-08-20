@@ -1,20 +1,32 @@
 package tr.org.lkd.lyk2015.camp.model;
 
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.Size;
 
 //Abstract oldugu icin entity kullanilmayacak. Ancak diger yerlerde kullanilacagi icin su kullanilir
 
 @MappedSuperclass
 public abstract class AbstractUser extends AbstractBaseModel {
 
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String surname;
+    @NotEmpty
     private Integer birthDate;
+    @NotEmpty
+    @Column(unique = true)
     private Long tckn;
+    @Column(unique = true)
+    @NotEmpty
     private String email;
+    @NotEmpty
     private String password;
+    @Column(unique = true)
+    @NotEmpty
     private String phone;
 
     public String getPhone() {

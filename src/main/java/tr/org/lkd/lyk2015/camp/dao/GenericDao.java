@@ -65,6 +65,7 @@ public class GenericDao<T extends AbstractBaseModel> {
         final Session session = sessionFactory.getCurrentSession();
 
         final Calendar now = Calendar.getInstance();
+        t.setCreateDate(now);
         t.setUpdateDate(now);
 
         return (Long) session.save(t);

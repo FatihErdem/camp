@@ -1,10 +1,11 @@
 package tr.org.lkd.lyk2015.camp.model;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,33 +19,62 @@ public class Application extends AbstractBaseModel {
 
     @Max(2005)
     @Min(1940)
+    @NotEmpty
     private Integer year;
+
+    @NotEmpty
     @Enumerated(EnumType.STRING)
     private WorkStatus workStatus;
+
+    @NotEmpty
     private Boolean officer = false;
+
+    @NotEmpty
     private String corporation;
+
+    @NotEmpty
     private String workDetails;
+
+    @NotEmpty
     private Integer englishLevel = 0;
+
     private String githubLink;
+
     private String uuid;
+
     private Boolean validated = false;
+
+    @Size(min = 1, max = 3)
+    @ManyToMany
+    private Set<Course> preferredCourses = new HashSet<>();
+
+    @NotEmpty
+    @ManyToOne
+    private Student owner;
+
+    @NotEmpty
+    private boolean needAccomodation;
+
+    private boolean isSelected;
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setIsSelected(boolean isSelected) {
+        this.isSelected = isSelected;
+    }
 
     public WorkStatus getWorkStatus() {
         return workStatus;
     }
 
-    @ManyToMany
-    private Set<Course> preferredCourses = new HashSet<>();
-    @ManyToOne
-    private Student owner;
-    private boolean needAccomodation;
+    public void setWorkStatus(WorkStatus workStatus) {
+        this.workStatus = workStatus;
+    }
 
     public WorkStatus getWorokStatus() {
         return workStatus;
-    }
-
-    public void setWorkStatus(WorkStatus workStatus) {
-        this.workStatus = workStatus;
     }
 
     public boolean isOfficer() {
@@ -139,15 +169,15 @@ public class Application extends AbstractBaseModel {
         this.uuid = uuid;
     }
 
-    public enum WorkStatus {
-        WORKING, STUDENT, NOT_WORKING
-    }
-
     public Boolean getValidated() {
         return validated;
     }
 
     public void setValidated(Boolean validated) {
         this.validated = validated;
+    }
+
+    public enum WorkStatus {
+        WORKING, STUDENT, NOT_WORKING
     }
 }

@@ -1,8 +1,10 @@
 package tr.org.lkd.lyk2015.camp.model;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
 import java.util.Calendar;
 
 @MappedSuperclass
@@ -12,10 +14,16 @@ public abstract class AbstractBaseModel {
     @GeneratedValue
     private Long id;
 
+    @NotNull
     private Calendar createDate;
     private Calendar updateDate;
     private Calendar deleteDate;
 
+    // NotNull db seviyesinde constraint olusturmak zorunda degil.
+    // Hibernate olustuyor olabilir ama baska JSR303 implementasyonu olan teknolojilerde olmak zorunda degil.
+    // DB seviyesinde olmasinin sebebi elle girislerde sikinti olmasidir.
+    // @Column(nullable = false)
+    @NotNull
     private Boolean deleted = false;
 
     public Long getId() {
